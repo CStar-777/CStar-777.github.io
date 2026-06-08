@@ -6,40 +6,43 @@
     <title>CStar - AI Researcher</title>
     <style>
         :root {
-            --bg: #0d1117; --card: #161b22; --border: #30363d;
-            --text: #c9d1d9; --text2: #8b949e; --accent: #58a6ff; --accent2: #2f81f7;
+            --bg: #f6f8fa; --card: #ffffff; --border: #d0d7de;
+            --text: #1f2328; --text2: #656d76; --accent: #0969da; --accent2: #0550ae;
+            --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; }
+        body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif; line-height: 1.6; }
         a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
         .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
 
+        /* Nav */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; font-size: 0.92rem; }
+        nav .brand { font-weight: 700; font-size: 1.1rem; }
+        nav .nav-links a { margin-left: 20px; color: var(--text2); } nav .nav-links a:hover { color: var(--accent); }
+
         /* Hero */
-        .hero { text-align: center; padding: 80px 0 48px; }
-        .hero h1 { font-size: 2.5rem; margin-bottom: 8px; }
-        .hero .subtitle { font-size: 1.15rem; color: var(--accent); margin-bottom: 16px; }
-        .hero .bio { color: var(--text2); max-width: 520px; margin: 0 auto 24px; }
-        .hero .links a { display: inline-block; margin: 0 6px; padding: 6px 18px; border: 1px solid var(--border); border-radius: 20px; font-size: 0.9rem; transition: 0.2s; }
-        .hero .links a:hover { border-color: var(--accent); background: rgba(88,166,255,0.1); text-decoration: none; }
+        .hero { padding: 56px 0 40px; text-align: left; }
+        .hero h1 { font-size: 2.4rem; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.5px; }
+        .hero .subtitle { font-size: 1.15rem; color: var(--accent); font-weight: 500; margin-bottom: 12px; }
+        .hero .bio { color: var(--text2); max-width: 520px; font-size: 1rem; }
 
         /* Section */
-        .section { margin: 0 0 40px; }
-        .section h2 { font-size: 1.35rem; border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
-        .section h2 .icon { font-size: 1.2rem; }
+        .section { margin: 0 0 36px; }
+        .section h2 { font-size: 1.3rem; padding-bottom: 8px; margin-bottom: 18px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
 
         /* Cards */
-        .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 14px; }
-        .card .meta { color: var(--accent); font-size: 0.85rem; margin-bottom: 4px; }
-        .card .title { font-size: 1.05rem; font-weight: 600; }
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 12px; box-shadow: var(--shadow); }
+        .card .meta { color: var(--accent); font-size: 0.84rem; font-weight: 500; margin-bottom: 4px; }
+        .card .title { font-size: 1.02rem; font-weight: 600; }
         .card .desc { color: var(--text2); font-size: 0.92rem; margin-top: 4px; }
-        .card .tags { margin-top: 10px; }
-        .card .tags span { display: inline-block; background: rgba(88,166,255,0.12); color: var(--accent); padding: 2px 10px; border-radius: 12px; font-size: 0.8rem; margin: 2px 4px 2px 0; }
+        .card .tags { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px; }
+        .card .tags span { background: #ddf4ff; color: var(--accent); padding: 3px 10px; border-radius: 12px; font-size: 0.79rem; font-weight: 500; }
 
-        /* Education timeline */
+        /* Timeline */
         .timeline { border-left: 2px solid var(--border); padding-left: 20px; margin-left: 8px; }
         .timeline-item { margin-bottom: 18px; position: relative; }
-        .timeline-item::before { content: ''; position: absolute; left: -26px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
-        .timeline-item .date { color: var(--accent); font-size: 0.85rem; }
+        .timeline-item::before { content: ''; position: absolute; left: -26px; top: 7px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); }
+        .timeline-item .date { color: var(--accent); font-size: 0.84rem; font-weight: 500; }
         .timeline-item .school { font-weight: 600; }
         .timeline-item .detail { color: var(--text2); font-size: 0.9rem; }
 
@@ -47,14 +50,24 @@
         .pub-item { margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
         .pub-item:last-child { border-bottom: none; }
         .pub-item .pub-title { font-weight: 600; }
-        .pub-item .pub-venue { display: inline-block; background: #238636; color: #fff; padding: 1px 8px; border-radius: 4px; font-size: 0.78rem; margin-left: 6px; }
-        .pub-item .pub-authors { color: var(--text2); font-size: 0.88rem; }
+        .pub-item .pub-venue { display: inline-block; background: #dafbe1; color: #116329; padding: 1px 8px; border-radius: 4px; font-size: 0.78rem; font-weight: 600; margin-left: 6px; }
+        .pub-item .pub-venue.iccv { background: #ddf4ff; color: var(--accent); }
+        .pub-item .pub-venue.patent { background: #faf0fe; color: #8250df; }
+        .pub-item .pub-authors { color: var(--text2); font-size: 0.87rem; }
+
+        /* Two columns */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
 
         footer { text-align: center; padding: 40px 0; color: var(--text2); font-size: 0.85rem; }
 
+        /* Gradient accent bar */
+        .accent-bar { height: 3px; background: linear-gradient(90deg, #0969da, #8250df, #cf222e, #1a7f37); border-radius: 0 0 8px 8px; margin-bottom: 40px; }
+
         @media (max-width: 600px) {
             .hero h1 { font-size: 1.8rem; }
-            .hero { padding: 40px 0 32px; }
+            .hero { padding: 32px 0 28px; }
+            nav .nav-links { display: none; }
         }
     </style>
 </head>
@@ -62,24 +75,35 @@
 
 <div class="container">
 
+    <!-- Nav -->
+    <nav>
+        <span class="brand">CStar</span>
+        <div class="nav-links">
+            <a href="#publications">Publications</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Accent -->
+    <div class="accent-bar"></div>
+
     <!-- Hero -->
     <div class="hero">
         <h1>CStar</h1>
-        <div class="subtitle">PhD Student in Artificial Intelligence</div>
+        <div class="subtitle">PhD Student in Artificial Intelligence · LLM Agent Researcher</div>
         <p class="bio">
-            AI researcher focusing on <strong>LLM Agents</strong>, Vision-Language Models,
-            and Computer Vision. Passionate about building AI systems that can reason, plan, and act.
-        </p>
-        <div class="links">
-            <a href="https://github.com/CStar-777">GitHub</a>
+            AI researcher at <strong>Xiamen University</strong>, focusing on LLM Agents, Vision-Language Models,
+            and Computer Vision. Building AI systems that can reason, plan, and act.
+            <br>
+            <a href="https://github.com/CStar-777" style="margin-right:16px;">GitHub</a>
             <a href="mailto:1062472315@qq.com">Email</a>
-            <a href="#contact">Contact</a>
-        </div>
+        </p>
     </div>
 
     <!-- Education -->
     <div class="section">
-        <h2><span class="icon">🎓</span> Education</h2>
+        <h2>🎓 Education</h2>
         <div class="timeline">
             <div class="timeline-item">
                 <div class="date">2026.09 – 2030.06</div>
@@ -88,12 +112,12 @@
             </div>
             <div class="timeline-item">
                 <div class="date">2023.09 – 2026.06</div>
-                <div class="school">M.S. in Computer Science</div>
-                <div class="detail">Xiamen University — Media Analysis and Computing Lab (Fujian Key Lab), advised by Prof. Rongrong Ji</div>
+                <div class="school">M.S. in Computer Science & Technology</div>
+                <div class="detail">Xiamen University · Media Analysis and Computing Lab (福建省重点实验室) · Advisor: Prof. Rongrong Ji</div>
             </div>
             <div class="timeline-item">
                 <div class="date">2019.09 – 2023.06</div>
-                <div class="school">B.E. in Computer Science</div>
+                <div class="school">B.E. in Computer Science & Technology</div>
                 <div class="detail">East China Normal University</div>
             </div>
         </div>
@@ -101,22 +125,22 @@
 
     <!-- Research -->
     <div class="section">
-        <h2><span class="icon">🔬</span> Research Interests</h2>
+        <h2>🔬 Research Interests</h2>
         <div class="card">
             <div class="tags">
                 <span>LLM Agents</span><span>ReAct</span><span>LangChain</span><span>RAG</span><span>MCP</span><span>Agent Tool-Use</span>
-                <span>Vision-Language Models</span><span>Multimodal Reasoning</span><span>VLM Alignment</span>
-                <span>Industrial Anomaly Detection</span><span>Instance Segmentation</span><span>Camouflaged Object Detection</span>
+                <span>VLM Reasoning</span><span>Multimodal Alignment</span><span>Prompt Engineering</span>
+                <span>Anomaly Detection</span><span>Instance Segmentation</span><span>COD</span>
             </div>
         </div>
     </div>
 
     <!-- Publications -->
-    <div class="section">
-        <h2><span class="icon">📝</span> Publications</h2>
+    <div class="section" id="publications">
+        <h2>📝 Publications</h2>
         <div class="pub-item">
             <span class="pub-title">Enhancing Semi-Supervised Instance Segmentation via Depth-Guided Learning</span>
-            <span class="pub-venue">PRCV</span>
+            <span class="pub-venue iccv">PRCV</span>
             <div class="pub-authors">First Author</div>
         </div>
         <div class="pub-item">
@@ -126,71 +150,68 @@
         </div>
         <div class="pub-item">
             <span class="pub-title">一种基于模型校准注意力的工业异常检测方法</span>
-            <span class="pub-venue" style="background:#6e40c9;">Patent</span>
+            <span class="pub-venue patent">Patent</span>
             <div class="pub-authors">First Author</div>
         </div>
     </div>
 
     <!-- Projects -->
-    <div class="section">
-        <h2><span class="icon">🛠️</span> Projects</h2>
+    <div class="section" id="projects">
+        <h2>🛠️ Projects</h2>
         <div class="card">
             <div class="meta">2025.08 – 2025.10</div>
             <div class="title">PDF Knowledge QA System</div>
-            <div class="desc">Built an end-to-end RAG system with LangChain Agent, FAISS vector store, and DeepSeek-Chat for document QA.</div>
-            <div class="tags"><span>Streamlit</span><span>LangChain</span><span>Agent</span><span>FAISS</span><span>DeepSeek</span><span>RAG</span></div>
+            <div class="desc">End-to-end RAG system built with LangChain Agent, FAISS vector store, and DeepSeek-Chat for semantic document Q&A.</div>
+            <div class="tags"><span>Streamlit</span><span>LangChain Agent</span><span>FAISS</span><span>DeepSeek</span><span>RAG</span></div>
         </div>
         <div class="card">
             <div class="meta">2024.06 – 2024.11</div>
             <div class="title">Industrial Defect Vision-Language Model</div>
-            <div class="desc">Fine-tuned Qwen2-VL-7B with LoRA for industrial anomaly detection, using DeepSpeed ZeRO for multi-GPU distributed training and vLLM for inference.</div>
-            <div class="tags"><span>Qwen2-VL</span><span>LoRA</span><span>DeepSpeed</span><span>vLLM</span><span>VLM</span></div>
+            <div class="desc">Fine-tuned Qwen2-VL-7B using LoRA for industrial anomaly detection. Used DeepSpeed ZeRO for distributed training and vLLM for efficient inference.</div>
+            <div class="tags"><span>Qwen2-VL</span><span>LoRA</span><span>DeepSpeed ZeRO</span><span>vLLM</span></div>
         </div>
         <div class="card">
             <div class="meta">2023.12 – 2024.06</div>
             <div class="title">Deep Learning Face Recognition Attendance System</div>
-            <div class="desc">End-to-end system with YOLOv5 detection, ArcFace embedding, PFLD-CRNN license plate recognition, and real-time HTTP/MQTT communication.</div>
-            <div class="tags"><span>YOLOv5</span><span>ArcFace</span><span>PFLD</span><span>MQTT</span><span>FastAPI</span></div>
+            <div class="desc">End-to-end system with YOLOv5 for detection, ArcFace for embedding, PFLD-CRNN for license plates, and HTTP/MQTT for real-time communication.</div>
+            <div class="tags"><span>YOLOv5</span><span>ArcFace</span><span>PFLD</span><span>FastAPI</span><span>MQTT</span></div>
         </div>
     </div>
 
-    <!-- Skills -->
-    <div class="section">
-        <h2><span class="icon">💻</span> Tech Stack</h2>
-        <div class="card">
-            <div class="tags">
-                <span>Python</span><span>PyTorch</span><span>LangChain</span><span>FAISS</span>
-                <span>Linux</span><span>Git</span><span>Docker</span><span>FastAPI</span><span>Streamlit</span>
-                <span>Codex</span><span>Claude Code</span><span>Prompt Engineering</span>
-                <span>LoRA</span><span>DeepSpeed</span><span>vLLM</span>
+    <!-- Tech + Agent -->
+    <div class="grid-2">
+        <div class="section">
+            <h2>💻 Tech Stack</h2>
+            <div class="card">
+                <div class="tags">
+                    <span>Python</span><span>PyTorch</span><span>LangChain</span><span>FAISS</span>
+                    <span>Linux</span><span>Git</span><span>Docker</span><span>FastAPI</span><span>Streamlit</span>
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- Agent Skills -->
-    <div class="section">
-        <h2><span class="icon">🤖</span> Agent Skills</h2>
-        <div class="card">
-            <div class="tags">
-                <span>ReAct Paradigm</span><span>LangChain Agent</span><span>RAG Pipelines</span>
-                <span>MCP</span><span>Skills Composition</span><span>Tool-Use</span>
-                <span>Coding Agents (Codex, Claude Code)</span><span>Prompt Optimization</span>
+        <div class="section">
+            <h2>🤖 Agent Skills</h2>
+            <div class="card">
+                <div class="tags">
+                    <span>ReAct</span><span>RAG</span><span>MCP</span><span>Skills</span><span>Tool-Use</span>
+                    <span>Codex</span><span>Claude Code</span><span>Prompt Eng</span>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Contact -->
     <div class="section" id="contact">
-        <h2><span class="icon">📫</span> Contact</h2>
+        <h2>📫 Contact</h2>
         <div class="card">
-            <p style="margin-bottom:6px;">📧 <a href="mailto:1062472315@qq.com">1062472315@qq.com</a></p>
-            <p style="margin-bottom:6px;">🐙 <a href="https://github.com/CStar-777">github.com/CStar-777</a></p>
+            <p style="margin-bottom:4px;">📧 <a href="mailto:1062472315@qq.com">1062472315@qq.com</a></p>
+            <p style="margin-bottom:4px;">🐙 <a href="https://github.com/CStar-777">github.com/CStar-777</a></p>
             <p>📍 Fujian, China</p>
         </div>
     </div>
 
     <footer>
-        &copy; 2026 CStar. Built with ❤️
+        &copy; 2026 CStar
     </footer>
 
 </div>
